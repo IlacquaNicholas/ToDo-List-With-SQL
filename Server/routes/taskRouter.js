@@ -60,4 +60,23 @@ router.post('/', (req, res)=>{
     });
 });
 
+router.delete('/:id', (req, res)=>{
+    console.log('DELETE /tasks/:id');
+    console.log('req.params', req.params);
+    const taskIdToDelete = req.params.id;
+    const sqlTable = `
+    DELETE FROM toDoList
+      WHERE "id"=$1;
+    `;
+    const sqlValues = [taskIdToDelete]
+    pool.query(sqlTable, sqlValues)
+    .then((dbResult)=>{
+        res.sendStatus(200);
+    })
+    .catch((dbErr)=>{
+        console.log(dbErr);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
