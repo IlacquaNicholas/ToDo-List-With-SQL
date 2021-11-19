@@ -40,13 +40,14 @@ router.post('/', (req, res)=>{
     const newTask = req.body;
     const sqlText = `
     INSERT INTO toDoList
-     ("category", "task")
+     ("category", "task", "completed")
     VALUES
-     ($1, $2);
+     ($1, $2, $3);
     `;
     const sqlValues = [
         newTask.category,
-        newTask.task
+        newTask.task,
+        newTask.completed
     ];
     pool.query(sqlText, sqlValues)
     .then((dbResult)=>{
@@ -80,18 +81,14 @@ router.delete('/:id', (req, res)=>{
 });
 router.put('/:id', (req, res) => {
     console.log('req.params', req.params);
-    console.log('req.body', req.body);
     const tasksSetToComplete = req.params.id;
-    const currentCompletion = req.body.currentCompletion;
+    const complete = "Yeppers";
     const sqlText = `
     UPDATE toDoList
-      SET * = $1
-      WHERE "id" =$2;
+      SET "completed"= $1
+      WHERE "id" = $2;
     `;
-    const sqlValues = [
-        currentCompletion,
-        tasksSetToComplete
-    ]
+    const sqlValues = [complete, tasksSetToComplete]
     pool.query(sqlText, sqlValues)
         .then((dbResult) => {
             res.sendStatus(200)
