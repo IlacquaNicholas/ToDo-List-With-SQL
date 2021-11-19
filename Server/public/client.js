@@ -5,7 +5,25 @@ function onReady(){
     getTask();
     $('#addTask').on('click', addTask)
     $('#tasksInTable').on('click', '.delete-btn', deleteOnClick)
+    $('#tasksInTable').on('click', completeTaskOnClick)
+
 }
+function completeTaskOnClick(){
+console.log('complete works');
+const completeTask = {
+    completed: $('.complete-btn').css('backround-color', 'green')
+}
+$.ajax({
+    method: "PUT",
+    url: `/tasks/${completeTask.id}`, 
+    data: completeTask
+}).then((response)=>{
+    console.log('you are in the PUT');
+    
+}).catch((err)=>{
+    console.log(err);
+});
+};
 
 function deleteOnClick(){
     const taskIdToDelete = $(this).data('id');
@@ -52,11 +70,10 @@ $.ajax({
          <tr>
           <td>${task.category}</td>
           <td>${task.task}</td>
+          <td><button class="complete-btn" data-id="${task.id}">Complete</button></td>
            <td><button class="delete-btn" data-id="${task.id}">Delete</button></td>
          </tr>
         `);
-        // <td><button class="complete-btn" data-id="${task.id}">Complete</button></td>
-        //data-rank="${task.rank}"might need to add this to the complete button 
     }
 }).catch((error)=>{
     console.log('getTask error', error);

@@ -14,9 +14,9 @@
 
 [x] Work on GET routes
 
-[ ] Work on the POST routes.
+[x] Work on the POST routes.
 
-[ ] Work on the DELETE button
+[x] Work on the DELETE button
 - which will include server and client side. This will delete a task from the todo list and remove it from the dom and the DB. 
 
 [ ]  Complete check off button (PUT)

@@ -78,5 +78,30 @@ router.delete('/:id', (req, res)=>{
         res.sendStatus(500);
     });
 });
+router.put('/:id', (req, res) => {
+    console.log('req.params', req.params);
+    console.log('req.body', req.body);
+    const tasksSetToComplete = req.params.id;
+    const currentCompletion = req.body.currentCompletion;
+    const sqlText = `
+    UPDATE toDoList
+      SET * = $1
+      WHERE "id" =$2;
+    `;
+    const sqlValues = [
+        currentCompletion,
+        tasksSetToComplete
+    ]
+    pool.query(sqlText, sqlValues)
+        .then((dbResult) => {
+            res.sendStatus(200)
+        })
+        .catch((dbErr) => {
+            console.log(dbErr);
+            res.sendStatus(500);
+        });
+});
+
+
 
 module.exports = router;
