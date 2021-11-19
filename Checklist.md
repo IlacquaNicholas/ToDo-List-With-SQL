@@ -8,7 +8,7 @@
 
 [x] Get the server up and running by installing npm, pg and putting all the approprite info in to make it run smooth.
 
-[ ] Write out the HTML and get a rough draft of what the page will look like. 
+[x] Write out the HTML and get a rough draft of what the page will look like. 
 
 ### Features
 

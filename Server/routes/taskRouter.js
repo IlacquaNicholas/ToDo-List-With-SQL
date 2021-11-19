@@ -22,5 +22,19 @@ pool.on('error', (error) => {
     console.log('Error with postgres pool', error)
 });
 
+router.get('/', (req, res)=>{
+    console.log('in Get /tasks');
+    const sqtText = 'SELECT * FROM toDoList;';
+    pool.query (sqtText)
+    .then ((dbResult)=>{
+        console.log(`${dbResults.rows.length} rows to send`);
+        res.send(dbResult.rows);
+    })
+    .catch((dbErr)=>{
+        console.log(dbErr);
+        res.sendStatus(500);
+    });
+});
+
 
 module.exports = require;
