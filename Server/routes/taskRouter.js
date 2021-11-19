@@ -11,12 +11,10 @@ const pool = new Pool({
     database: 'todo list', // the name of database, This can change!
     host: 'localhost', // where is your database?
 });
-
 // Log to our console when our pool object makes a connection:
 pool.on('connect', () => {
     console.log('Postgresql connected');
 });
-
 // Log to our console when something makes our pool error out:
 pool.on('error', (error) => {
     console.log('Error with postgres pool', error)
@@ -24,10 +22,10 @@ pool.on('error', (error) => {
 
 router.get('/', (req, res)=>{
     console.log('in Get /tasks');
-    const sqtText = 'SELECT * FROM toDoList;';
-    pool.query (sqtText)
+    const sqlText = 'SELECT * FROM toDoList;';
+    pool.query (sqlText)
     .then ((dbResult)=>{
-        console.log(`${dbResults.rows.length} rows to send`);
+        console.log(`${dbResult.rows.length} rows to send`)
         res.send(dbResult.rows);
     })
     .catch((dbErr)=>{
@@ -36,5 +34,30 @@ router.get('/', (req, res)=>{
     });
 });
 
+router.post('/', (req, res)=>{
+    console.log('in POST /tasks');
+    console.log('req.body:', req.body);
+    const newTask = req.body;
+    const sqlText = `
+    INSERT INTO toDoList
+     ("category", "task")
+    VALUES
+     ($1, $2);
+    `;
+    const sqlValues = [
+        newTask.category,
+        newTask.task
+    ];
+    pool.query(sqlText, sqlValues)
+    .then((dbResult)=>{
+        console.log('INSERT success');
+        res.sendStatus(200);
+        
+    })
+    .catch ((dbErr)=>{
+        console.log(dbErr);
+        res.sendStatus(500);
+    });
+});
 
-module.exports = require;
+module.exports = router;

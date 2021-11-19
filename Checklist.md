@@ -12,7 +12,7 @@
 
 ### Features
 
-[ ] Work on GET routes
+[x] Work on GET routes
 
 [ ] Work on the POST routes.
 
