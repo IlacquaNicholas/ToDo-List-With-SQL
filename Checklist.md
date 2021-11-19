@@ -3,7 +3,7 @@
  - including gitignore, server, server.js,router file, public, index html, css, jquery, client.js
  - make sure all files are talking to eachother and connected. 
 
-[ ] Create a DB named todo list
+[x] Create a DB named todo list
 - create a table and put at least one todo task in the table to have some dummy data. 
 
 [x] Get the server up and running by installing npm, pg and putting all the approprite info in to make it run smooth.

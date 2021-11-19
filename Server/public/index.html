@@ -8,8 +8,31 @@
     <script src="jquery-3.6.0.min.js"></script>
     <script src="client.js"></script>
     <title>Document</title>
+
 </head>
 <body>
-    
+    <header>
+        <h1>ToDO List</h1>
+    </header>
+    <main>
+        <section>
+            <form></form>
+             <input id="category" type="text" placeholder = "Category" >
+             <input id="task"    type="text"  placeholder="Task at Hand">
+             <button id="addTask">Add Task</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Task at Hand</th>
+                    </tr>
+                </thead>
+                <tbody id="tasksInTable">
+                    <!-- Append artists here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
 </body>
 </html>
