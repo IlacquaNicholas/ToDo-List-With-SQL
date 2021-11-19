@@ -36,5 +36,30 @@ router.get('/', (req, res)=>{
     });
 });
 
+router.post('/', (req, res)=>{
+    console.log('in POST /tasks');
+    console.log('req.body:', req.body);
+    const newTask = req.body;
+    const sqlText = `
+    INSERT INTO "toDoList"
+     ("category", "task")
+    VALUES
+     ($1, $2);
+    `
+    const sqlValues = [
+        newTask.category,
+        newTask.taskAtHand
+    ];
+    pool.query(sqlText, sqlValues)
+    .then((dbResults)=>{
+        console.log('INSERT success');
+        res.sendStatus(200);
+        
+    })
+    .catch ((dbErr)=>{
+        console.log(dbErr);
+        res.sendStatus(500);
+    });
+});
 
 module.exports = require;
