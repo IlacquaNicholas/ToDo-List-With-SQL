@@ -11,6 +11,7 @@ function onReady(){
 function completeTaskOnClick(){
 console.log('complete works');
 const completeTask = $(this).data('id')
+
 $.ajax({
     method: "PUT",
     url: `/tasks/${completeTask}`, 
@@ -24,7 +25,6 @@ getTask();
 
 function deleteOnClick(){
     const taskIdToDelete = $(this).data('id');
-   
     $.ajax({
         method: 'DELETE', 
         url: `/tasks/${taskIdToDelete}`
