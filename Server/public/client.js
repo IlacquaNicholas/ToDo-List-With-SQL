@@ -11,6 +11,7 @@ function onReady(){
 function completeTaskOnClick(){
 console.log('complete works');
 const completeTask = $(this).data('id')
+$('tbody').css('background-color', 'lightgreen')
 
 $.ajax({
     method: "PUT",
@@ -67,7 +68,7 @@ $.ajax({
     $('#tasksInTable').empty();
     for (let task of response){
         $('#tasksInTable').append(`
-         <tr>
+         <tr class="tr">
           <td>${task.category}</td>
           <td>${task.task}</td>
            <td>${task.completed}</td>
