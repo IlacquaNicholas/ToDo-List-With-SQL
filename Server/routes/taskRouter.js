@@ -40,13 +40,14 @@ router.post('/', (req, res)=>{
     const newTask = req.body;
     const sqlText = `
     INSERT INTO toDoList
-     ("category", "task")
+     ("category", "task", "completed")
     VALUES
-     ($1, $2);
+     ($1, $2, $3);
     `;
     const sqlValues = [
         newTask.category,
-        newTask.task
+        newTask.task,
+        newTask.completed
     ];
     pool.query(sqlText, sqlValues)
     .then((dbResult)=>{
@@ -78,5 +79,26 @@ router.delete('/:id', (req, res)=>{
         res.sendStatus(500);
     });
 });
+router.put('/:id', (req, res) => {
+    console.log('req.params', req.params);
+    const tasksSetToComplete = req.params.id;
+    const complete = "Yeppers";
+    const sqlText = `
+    UPDATE toDoList
+      SET "completed"= $1
+      WHERE "id" = $2;
+    `;
+    const sqlValues = [complete, tasksSetToComplete]
+    pool.query(sqlText, sqlValues)
+        .then((dbResult) => {
+            res.sendStatus(200)
+        })
+        .catch((dbErr) => {
+            console.log(dbErr);
+            res.sendStatus(500);
+        });
+});
+
+
 
 module.exports = router;
