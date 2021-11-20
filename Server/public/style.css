@@ -1,3 +1,30 @@
-body{
-    background-color: aqua;
+body {
+  background-image: url(https://thumbs.dreamstime.com/b/clipboard-checklist-d-people-man-person-32631601.jpg);
 }
+
+button{
+    border-radius: 10px;
+   background-color: lightsalmon;
+   border-color:saddlebrown;
+  
+}
+           
+header, section{
+    text-align: center;
+    
+}
+h1{
+    font-style: italic;
+}
+
+
+td, th {
+    font-variant: small-caps;
+    font-size: 20px;
+    font-style: oblique;
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: center;
+    padding-bottom: 10px;
+    width: 60vw;
+    padding: 1em;
