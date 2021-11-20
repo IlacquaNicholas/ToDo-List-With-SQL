@@ -11,7 +11,7 @@ function onReady(){
 function completeTaskOnClick(){
 console.log('complete works');
 const completeTask = $(this).data('id')
-$('tbody').css('background-color', 'lightgreen')
+
 
 $.ajax({
     method: "PUT",
@@ -71,11 +71,16 @@ $.ajax({
          <tr class="tr">
           <td>${task.category}</td>
           <td>${task.task}</td>
-           <td>${task.completed}</td>
+          <td class= "yes-yes">${task.completed}</td>
           <td><button class="complete-btn" data-id="${task.id}">Completed task</button></td>
-           <td><button class="delete-btn" data-id="${task.id}">Delete</button></td>
+          <td><button class="delete-btn" data-id="${task.id}">Delete</button></td>
          </tr>
         `);
+       if (task.completed === 'Yeppers'){
+           $('.yes-yes').css('background-color', 'lightgreen')
+       } else if (task.completed === 'no'){ 
+           $('tbody').css('background-color', 'lightgrey')
+       } else $('tbody').css('background-color', 'lightgrey')
     }
 }).catch((error)=>{
     console.log('getTask error', error);
