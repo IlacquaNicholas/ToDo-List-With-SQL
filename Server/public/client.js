@@ -80,7 +80,7 @@ $.ajax({
            $('.yes-yes').css('background-color', 'lightgreen')
        } else if (task.completed === 'no'){ 
            $('tbody').css('background-color', 'lightgrey')
-       } else $('tbody').css('background-color', 'lightgrey')
+       }
     }
 }).catch((error)=>{
     console.log('getTask error', error);
