@@ -75,7 +75,8 @@ $.ajax({
           <td><button class="complete-btn" data-id="${task.id}">Completed task</button></td>
           <td><button class="delete-btn" data-id="${task.id}">Delete</button></td>
          </tr>
-        `);
+        `);}
+        for (let task of response){
        if (task.completed === 'Yeppers'){
            $('.yes-yes').css('background-color', 'lightgreen')
        } else if (task.completed === 'no'){ 
