@@ -71,7 +71,7 @@ $.ajax({
           <td>${task.category}</td>
           <td>${task.task}</td>
            <td>${task.completed}</td>
-          <td><button class="complete-btn" data-id="${task.id}">Complete</button></td>
+          <td><button class="complete-btn" data-id="${task.id}">Completed task</button></td>
            <td><button class="delete-btn" data-id="${task.id}">Delete</button></td>
          </tr>
         `);
