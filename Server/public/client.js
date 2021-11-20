@@ -13,10 +13,10 @@ console.log('complete works');
 const completeTask = $(this).data('id')
 $.ajax({
     method: "PUT",
-    url: `/tasks/${completeTask.id}`, 
+    url: `/tasks/${completeTask}`, 
 }).then((response)=>{
     console.log('you are in the PUT');
-    
+getTask();
 }).catch((err)=>{
     console.log(err);
 });
@@ -24,6 +24,7 @@ $.ajax({
 
 function deleteOnClick(){
     const taskIdToDelete = $(this).data('id');
+   
     $.ajax({
         method: 'DELETE', 
         url: `/tasks/${taskIdToDelete}`
