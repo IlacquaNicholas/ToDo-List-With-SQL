@@ -25,7 +25,7 @@
 
 ### CSS Styling
 
-[ ] Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
+[x] Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
   - background color of the page
   - font family and size
   - text color & or background color of tasks *to show whether or not they have been completed*
