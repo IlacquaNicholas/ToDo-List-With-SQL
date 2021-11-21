@@ -11,13 +11,17 @@ function onReady(){
 function completeTaskOnClick(){
 console.log('complete works');
 const completeTask = $(this).data('id')
-
+    console.log(completeTask);
 
 $.ajax({
     method: "PUT",
     url: `/tasks/${completeTask}`, 
 }).then((response)=>{
     console.log('you are in the PUT');
+    // if (completeTask === 'Yeppers') {
+    //     $('.yes-yes').css('background-color', 'lightgreen')
+    //     console.log('in GREEN');
+    // }
 getTask();
 }).catch((err)=>{
     console.log(err);
@@ -71,19 +75,24 @@ $.ajax({
          <tr class="tr">
           <td>${task.category}</td>
           <td>${task.task}</td>
-          <td class= "yes-yes">${task.completed}</td>
+          <td class = "yes-yes">${task.completed}</td>
           <td><button class="complete-btn" data-id="${task.id}">Completed task</button></td>
           <td><button class="delete-btn" data-id="${task.id}">Delete</button></td>
          </tr>
-        `);}
-        for (let task of response){
-       if (task.completed === 'Yeppers'){
-           $('.yes-yes').css('background-color', 'lightgreen')
-       } else if (task.completed === 'no'){ 
-           $('tbody').css('background-color', 'lightgrey')
-       } else $('tbody').css('background-color', 'white')
+        `);
+        if (task.completed === 'Yeppers') {
+            $('.yes-yes').css('background-color', 'lightgreen')
+        }else(task.completed === 'No')
+        $('.yes-yes').css('background-color', 'lightgrey')
     }
-}).catch((error)=>{
+    //     for (let task of response){
+    //         let lightGreen =  $('#yes-yes').css('background-color', 'lightgreen')
+    //    if (task.completed !== 'Yeppers'){
+    //        $('#yes-yes').css('background-color', 'lightgrey')
+    //     }  return lightGreen;
+    //    } 
+    })
+.catch((error)=>{
     console.log('getTask error', error);
 });
 };

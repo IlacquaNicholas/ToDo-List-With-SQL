@@ -88,7 +88,7 @@ router.put('/:id', (req, res) => {
       SET "completed"= $1
       WHERE "id" = $2;
     `;
-    const sqlValues = [complete, tasksSetToComplete]
+    const sqlValues = [complete, tasksSetToComplete,]
     pool.query(sqlText, sqlValues)
         .then((dbResult) => {
             res.sendStatus(200)
