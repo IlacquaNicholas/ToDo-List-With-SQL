@@ -1,11 +1,12 @@
 CREATE TABLE  toDoList (
-	id SERIAL PRIMARY KEY,
+	"id" SERIAL PRIMARY KEY,
 	"category"  varchar, 
-	 "task" varchar
+	 "task" varchar,
+	 "completed" varchar
 );
 
 INSERT INTO toDoList 
-("category", "task")
+("category", "task","completed")
 VALUES
-('Bathroom', 'Need to clean the toliets and bath tubes'),
-('Shopping', 'Got to target and Cub Foods');
+('Bathroom', 'Need to clean the toliets and bath tubes','No' ),
+('Shopping', 'Got to target and Cub Foods', 'No');
